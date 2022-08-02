@@ -7,23 +7,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.love2code.springboot.dao.EmployeeDao;
 import com.love2code.springboot.entity.Employee;
+import com.love2code.springboot.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
 
-	private EmployeeDao employeeDao;
+	private EmployeeService employeeService;
 	
 	@Autowired
-	public EmployeeRestController(EmployeeDao employeeDao) {
-		this.employeeDao = employeeDao;
+	public EmployeeRestController(EmployeeService employeeService) {
+		this.employeeService = employeeService;
 	}
 	
 	@GetMapping("/employees")
 	public List<Employee> findAll() {
 		
-		return employeeDao.findAll();
+		return employeeService.findAll();
 	}
 }
